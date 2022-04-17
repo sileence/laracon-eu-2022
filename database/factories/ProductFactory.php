@@ -20,6 +20,7 @@ class ProductFactory extends Factory
             'name' => $this->faker->sentence,
             'max_ltv' => $this->faker->numberBetween(50, 90),
             'fee' => $this->faker->randomFloat(2, 0.01, 3),
+            'interest_rate' => $this->faker->randomFloat(2, 0.01, 3),
             'featured' => $this->faker->boolean,
         ];
     }

@@ -15,7 +15,7 @@
         <h2>Calculation results</h2>
 
         <p>LTV: {{ $ltv }}%</p>
-        <p>Loan amount: £{{ number_format($netLoan) }}</p>
+        <p>Loan amount: £{{ number_format($netLoan, 2) }}</p>
 
         <h2>Available products</h2>
 
@@ -25,8 +25,10 @@
                     <strong>{{ $product->name }}</strong>
                     <br>Max LTV: {{ $product->max_ltv }}%
                     <br>Product Fee: {{ $product->fee }}%
-                    <br>Product fee amount: £{{ number_format($product->fee_amount) }}
-                    <br>Gross loan amount: £{{ number_format($product->gross_loan) }}
+                    <br>Interest rate: {{ $product->interest_rate }}%
+                    <br>Product fee amount: £{{ number_format($product->fee_amount, 2) }}
+                    <br>Gross loan amount: £{{ number_format($product->gross_loan, 2) }}
+                    <br>Monthly interest: £{{ number_format($product->monthly_interest, 2) }}
                     <br><br>
                 </li>
             @endforeach

@@ -27,6 +27,7 @@ class ProductSearch extends Component
                 ->each(function (Product $product) use ($netLoan) {
                     $product->fee_amount = $netLoan * $product->fee / 100;
                     $product->gross_loan = $netLoan + $product->fee_amount;
+                    $product->monthly_interest = $product->gross_loan * $product->interest_rate / 100 / 12;
                 });
         } else {
             $netLoan = null;

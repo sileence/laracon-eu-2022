@@ -105,6 +105,7 @@ class ProductSeeder extends Seeder
             'name' => $name,
             'max_ltv' => $maxLtv,
             'fee' => $fee,
+            'interest_rate' => $fee / 2,
             'featured' => true,
         ]);
     }
@@ -115,6 +116,7 @@ class ProductSeeder extends Seeder
             'name' => $name,
             'max_ltv' => $maxLtv,
             'fee' => $fee,
+            'interest_rate' => $fee / 2,
             'featured' => false,
         ]);
     }

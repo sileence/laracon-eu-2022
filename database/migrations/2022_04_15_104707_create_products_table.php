@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->float('max_ltv');
             $table->float('fee');
+            $table->float('interest_rate');
             $table->boolean('featured')->default(false);
             $table->timestamps();
         });
