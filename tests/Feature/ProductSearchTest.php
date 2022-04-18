@@ -62,7 +62,7 @@ class ProductSearchTest extends TestCase
 
         Product::factory()->create([
             'name' => 'Product with LTV 81%',
-            'max_ltv' => 91,
+            'max_ltv' => 81,
             'featured' => false,
         ]);
 

@@ -38,6 +38,7 @@ class ProductSearch extends Component
         $featuredProducts = Product::query()
             ->where('featured', true)
             ->inRandomOrder()
+            ->take(5)
             ->get();
 
         return view('livewire.product-search', [
