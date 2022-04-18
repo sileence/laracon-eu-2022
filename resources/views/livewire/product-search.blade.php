@@ -37,11 +37,13 @@
         <p>Please enter the values above to start searching for products.</p>
     @endif
 
-    <h2>Featured products</h2>
+    @if ($featuredProducts->count())
+        <h2>Featured products</h2>
 
-    <ul>
-        @foreach($featuredProducts as $product)
-            <li>{{ $product->name }}</li>
-        @endforeach
-    </ul>
+        <ul>
+            @foreach($featuredProducts as $product)
+                <li>{{ $product->name }}</li>
+            @endforeach
+        </ul>
+    @endif
 </div>
