@@ -1,6 +1,6 @@
 # Refactoring to SOLID in Laravel
 
-This repository is from my talk in [Laracon EU](https://laracon.eu/) 2022.
+This repository contains the demo from my talk in [Laracon EU](https://laracon.eu/) 2022.
 
 ## Installation instructions
 
