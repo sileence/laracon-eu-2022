@@ -1,16 +1,69 @@
 html,
-body{
-  margin:0;
+body {
+  margin: 0;
   font-size: 16px;
-  font-family: sans-serif;
+  line-height: 1.5;
+  font-family: 'Open Sans', sans-serif;
+  background: #f5f5f5;
 }
 
-*,*:before,*:after{
+
+*, *:before, *:after {
   box-sizing: border-box;
 }
 
 
-button{
+.mt-30 {
+  margin-top: 30px;
+}
+
+
+.ph-24 {
+  padding: 0 24px;
+}
+
+
+h2 {
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 500;
+  margin: 0;
+}
+
+
+h3 {
+  margin: 0 0 1em 0;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+}
+
+
+h4 {
+  margin: 0 0 1.5em;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+
+legend {
+  display: contents;
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+}
+
+
+.button {
   font: inherit;
   display: inline-flex;
   grid-gap: 0;
@@ -23,28 +76,161 @@ button{
   cursor: pointer;
   position: relative;
   text-decoration: none;
-  transition:
-    all ease-out 300ms,
-    outline 0s;
+  transition: all ease-out 300ms,
+  outline 0s;
   outline: none;
   background-color: #fef37f;
-  box-shadow: 0 1px 4px rgba(0,0,0,.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .1);
   color: #333d45;
   border-color: #eeda00;
   padding: 12px 24px;
 }
 
-button:hover{
+
+.button:hover {
   outline: none;
   background-color: #fef37f;
-  box-shadow: 0 1px 4px rgba(0,0,0,.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .1);
 }
 
-button:focus{
+
+.button:focus {
   outline: 4px solid #a4bbdc;
 }
 
-button:active{
+
+.button:active {
   outline: none;
   background-color: #eeda00;
+}
+
+
+label {
+  margin-top: 20px;
+  display: block;
+}
+
+
+.label {
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+
+input {
+  box-sizing: border-box;
+  margin: 8px 0 0 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  text-align: left;
+  width: 100%;
+  line-height: 1.5;
+  padding: 12px;
+  height: 44px;
+  background: #fff;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+}
+
+
+input:focus {
+  box-shadow: 0 0 0 1px #4a77ba;
+  border-color: #4a77ba;
+  outline: 0 none;
+}
+
+
+strong {
+  font-weight: 500;
+}
+
+
+dt {
+  font-size: 14px;
+}
+
+
+dd {
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+}
+
+
+.box {
+  padding: 32px 0;
+  background: #fff;
+  border: 1px solid #c2c5c7;
+  box-sizing: border-box;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+
+/* LAYOUT */
+.calculator {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  gap: 1rem;
+  width: 100%;
+  max-width: 60rem;
+  margin: 2rem auto;
+}
+
+
+.sidebar {
+  position: sticky;
+  top: 2rem;
+}
+
+
+.featured {
+  margin-top: 40px;
+  border-top: 1px solid #c2c5c7;
+  padding-top: 32px;
+}
+
+
+.featuredList {
+  padding: 0;
+  margin: .5em 0 0 0;
+  font-size: 14px;
+}
+
+
+.summary {
+  display: inline-flex;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+
+.products {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  flex-gap: 20px;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+
+.product {
+  padding: 16px 24px;
+  border: 0;
+}
+
+
+.productDetails {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(min-content, 100px));
+  grid-template-rows: auto auto;
+  grid-gap: 0 20px;
+  width: 100%;
+  grid-auto-flow: column;
 }
