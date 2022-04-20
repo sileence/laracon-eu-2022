@@ -49,7 +49,7 @@
 
 
   @if ($searchProducts)
-    <section>
+    <section class="results">
       <h2>Calculation results</h2>
 
       <div class="summary">
@@ -62,10 +62,10 @@
       </div>
 
 
-      <section>
+      <section class="availableProducts">
         <h3>Available products</h3>
 
-        <ul class="products">
+        <ul class="productList">
           @foreach($products as $product)
             <li>
               <article class="box product">
