@@ -41,10 +41,11 @@ class ProductSearchTest extends TestCase
         Livewire::test(ProductSearch::class)
             ->set('propertyValue', '100000')
             ->set('depositAmount', '20000')
-            ->assertSee('LTV: 80%')
-            ->assertSee('Loan amount: £80,000');
+            ->assertSeeInOrder([
+                'LTV', '80%', 'Loan amount', '£80,000'
+            ]);
     }
-
+    
     /** @test */
     public function shows_available_products_with_ltv_greater_or_equal_than_80()
     {
