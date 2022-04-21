@@ -1,7 +1,7 @@
 <main class="calculator">
   <div>
     <div class="box sidebar">
-      <form class="ph-24">
+      <form class="ph-24" wire:submit.prevent="$refresh">
         <fieldset>
           <legend>Search products</legend>
 
@@ -23,11 +23,7 @@
             >
           </label>
 
-          <button
-            wire:click="$refresh"
-            type="button"
-            class="button mt-30"
-          >
+          <button type="submit" class="button mt-30">
             Find products
           </button>
         </fieldset>
