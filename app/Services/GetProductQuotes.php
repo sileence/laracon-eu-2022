@@ -10,6 +10,10 @@ use Illuminate\Support\Collection;
 
 class GetProductQuotes
 {
+    public function __construct(private CreateProductQuote $createProductQuote)
+    {
+    }
+
     public function get(LtvCalculation $ltvCalculation): Collection
     {
         return Product::query()
@@ -17,9 +21,11 @@ class GetProductQuotes
             ->orderBy('max_ltv')
             ->get()
             ->each(function (Product $product) use ($ltvCalculation) {
-                $product->fee_amount = $ltvCalculation->netLoan * $product->fee / 100;
-                $product->gross_loan = $ltvCalculation->netLoan + $product->fee_amount;
-                $product->monthly_interest = $product->gross_loan * $product->interest_rate / 100 / 12;
+                $productQuote = $this->createProductQuote->create($product, $ltvCalculation);
+
+                $product->fee_amount = $productQuote->feeAmount;
+                $product->gross_loan = $productQuote->grossLoanAmount;
+                $product->monthly_interest = $productQuote->monthlyInterest;
             });
     }
 }

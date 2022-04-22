@@ -4,6 +4,7 @@ namespace Tests\Unit\Services;
 
 use App\Dto\LtvCalculation;
 use App\Models\Product;
+use App\Services\CreateProductQuote;
 use App\Services\GetProductQuotes;
 use Tests\TestCase;
 
@@ -34,7 +35,7 @@ class GetProductQuotesTest extends TestCase
             'max_ltv' => 74,
         ]);
 
-        $getProductQuotes = new GetProductQuotes();
+        $getProductQuotes = new GetProductQuotes(new CreateProductQuote);
 
         $productQuotes = $getProductQuotes->get(new LtvCalculation(
             propertyValue: 100_000,
