@@ -35,18 +35,11 @@ class ProductSearch extends Component
             $products = collect();
         }
 
-        $featuredProducts = Product::query()
-            ->where('featured', true)
-            ->inRandomOrder()
-            ->take(5)
-            ->get();
-
         return view('livewire.product-search', [
             'searchProducts' => $searchProducts,
             'ltv' => $ltv,
             'netLoan' => $netLoan,
             'products' => $products,
-            'featuredProducts' => $featuredProducts,
         ]);
     }
 }
