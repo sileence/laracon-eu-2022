@@ -25,10 +25,7 @@ class CreateProductQuoteTest extends TestCase
 
         $actualQuote = $createProductQuote->create($givenProduct, $givenLtvCalculation);
 
-        self::assertSame($givenProduct, $actualQuote->product, "The quote doesn't belong to the given product");
-        self::assertSame($expectedQuote->feeAmount, $actualQuote->feeAmount, "The fee amounts don't match");
-        self::assertSame($expectedQuote->grossLoanAmount, $actualQuote->grossLoanAmount, "The gross loan amounts don't match");
-        self::assertSame($expectedQuote->monthlyInterest, $actualQuote->monthlyInterest, "The monthly interests don't match");
+        $this->assertProductQuote($expectedQuote, $actualQuote);
     }
 
     private function providesProductsAndCalculations(): Iterator

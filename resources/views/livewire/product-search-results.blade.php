@@ -11,34 +11,34 @@
                 </div>
             </div>
 
-            @if($products->isNotEmpty())
+            @if($productQuotes->isNotEmpty())
                 <section class="availableProducts">
                     <h3>Available products</h3>
 
                     <ul class="productList">
-                        @foreach($products as $product)
+                        @foreach($productQuotes as $quote)
                             <li>
                                 <article class="box product">
-                                    <h4>{{ $product->name }}</h4>
+                                    <h4>{{ $quote->product->name }}</h4>
 
                                     <dl class="productDetails">
                                         <dt>Max LTV</dt>
-                                        <dd>{{ $product->max_ltv }}%</dd>
+                                        <dd>{{ $quote->product->max_ltv }}%</dd>
 
                                         <dt>Product Fee</dt>
-                                        <dd>{{ $product->fee }}%</dd>
+                                        <dd>{{ $quote->product->fee }}%</dd>
 
                                         <dt>Interest rate</dt>
-                                        <dd>{{ $product->interest_rate }}%</dd>
+                                        <dd>{{ $quote->product->interest_rate }}%</dd>
 
                                         <dt>Product fee amount</dt>
-                                        <dd>£{{ number_format($product->fee_amount, 2) }}</dd>
+                                        <dd>£{{ number_format($quote->feeAmount, 2) }}</dd>
 
                                         <dt>Gross loan amount</dt>
-                                        <dd>£{{ number_format($product->gross_loan, 2) }}</dd>
+                                        <dd>£{{ number_format($quote->grossLoanAmount, 2) }}</dd>
 
                                         <dt>Monthly interest</dt>
-                                        <dd>£{{ number_format($product->monthly_interest, 2) }}</dd>
+                                        <dd>£{{ number_format($quote->monthlyInterest, 2) }}</dd>
                                     </dl>
                                 </article>
                             </li>

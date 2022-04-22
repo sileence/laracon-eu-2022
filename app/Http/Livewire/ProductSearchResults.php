@@ -36,17 +36,17 @@ class ProductSearchResults extends Component
         if ($searchProducts) {
             $ltvCalculation = $this->calculateLtv->calculate($this->propertyValue, $this->depositAmount);
 
-            $products = $this->getProductQuotes->get($ltvCalculation);
+            $productQuotes = $this->getProductQuotes->get($ltvCalculation);
         } else {
             $ltvCalculation = null; // Good case for the Null Object Pattern?
 
-            $products = collect();
+            $productQuotes = collect();
         }
 
         return view('livewire.product-search-results', [
             'searchProducts' => $searchProducts,
             'ltvCalculation' => $ltvCalculation,
-            'products' => $products,
+            'productQuotes' => $productQuotes,
         ]);
     }
 }
