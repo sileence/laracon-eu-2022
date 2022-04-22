@@ -4,10 +4,10 @@
             <h2>Calculation results</h2>
             <div class="summary">
                 <div>
-                    <strong>LTV:</strong> {{ $ltv }}%
+                    <strong>LTV:</strong> {{ $ltvCalculation->ltv }}%
                 </div>
                 <div>
-                    <strong>Loan amount:</strong> £{{ number_format($netLoan, 2) }}
+                    <strong>Loan amount:</strong> £{{ number_format($ltvCalculation->netLoan, 2) }}
                 </div>
             </div>
 
