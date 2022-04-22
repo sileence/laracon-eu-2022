@@ -1,5 +1,5 @@
 <div>
-    @if ($searchProducts)
+    @if ($ltvCalculation)
         <section class="results">
             <h2>Calculation results</h2>
             <div class="summary">
