@@ -57,7 +57,7 @@
         </div>
       </div>
 
-
+      @if($products->isNotEmpty())
       <section class="availableProducts">
         <h3>Available products</h3>
 
@@ -91,12 +91,18 @@
           @endforeach
         </ul>
       </section>
+      @else
+        <div class="noResults">
+            <strong>No products match your search criteria</strong>
+            <p>Try adjusting the details on the left, for example by increasing the deposit amount.</p>
+        </div>
+      @endif
     </section>
 
   @else
     <div class="noResults">
-      <strong>We currently do not have any products matching your criteria</strong>
-      <p>Try adjusting your details on the left.</p>
+      <strong>Please complete the form on the left</strong>
+      <p>To start your product search please enter a property value and a deposit amount.</p>
     </div>
   @endif
 </main>
