@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Product;
 use App\Services\CalculateLtv;
+use App\Services\GetProductQuotes;
 use Livewire\Component;
 
 class ProductSearchResults extends Component
@@ -15,10 +16,12 @@ class ProductSearchResults extends Component
     public $depositAmount;
 
     private CalculateLtv $calculateLtv;
+    private GetProductQuotes $getProductQuotes;
 
-    public function boot(CalculateLtv $calculateLtv)
+    public function boot(CalculateLtv $calculateLtv, GetProductQuotes $getProductQuotes)
     {
         $this->calculateLtv = $calculateLtv;
+        $this->getProductQuotes = $getProductQuotes;
     }
 
     public function searchProducts($formData)
@@ -33,15 +36,7 @@ class ProductSearchResults extends Component
         if ($searchProducts) {
             $ltvCalculation = $this->calculateLtv->calculate($this->propertyValue, $this->depositAmount);
 
-            $products = Product::query()
-                ->where('max_ltv', '>=', $ltvCalculation->ltv)
-                ->orderBy('max_ltv')
-                ->get()
-                ->each(function (Product $product) use ($ltvCalculation) {
-                    $product->fee_amount = $ltvCalculation->netLoan * $product->fee / 100;
-                    $product->gross_loan = $ltvCalculation->netLoan + $product->fee_amount;
-                    $product->monthly_interest = $product->gross_loan * $product->interest_rate / 100 / 12;
-                });
+            $products = $this->getProductQuotes->get($ltvCalculation);
         } else {
             $ltvCalculation = null; // Good case for the Null Object Pattern?
 
