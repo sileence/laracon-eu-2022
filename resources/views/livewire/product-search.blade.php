@@ -93,16 +93,16 @@
       </section>
       @else
         <div class="noResults">
-            <strong>No products match your search criteria</strong>
-            <p>Try adjusting the details on the left, for example by increasing the deposit amount.</p>
+            <strong>No product matches your search criteria</strong>
+            <p>Try adjusting the details on the left, for example, increasing the deposit amount.</p>
         </div>
       @endif
     </section>
 
   @else
     <div class="noResults">
-      <strong>Please complete the form on the left</strong>
-      <p>To start your product search please enter a property value and a deposit amount.</p>
+      <strong>Complete the form on the left</strong>
+      <p>To begin your product search, please enter a property value and a deposit amount.</p>
     </div>
   @endif
 </main>
