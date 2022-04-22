@@ -5,11 +5,18 @@ namespace App\Http\Livewire;
 use App\Models\Product;
 use Livewire\Component;
 
-class ProductSearch extends Component
+class ProductSearchResults extends Component
 {
+    protected $listeners = ['searchProducts'];
+
     public $propertyValue;
 
     public $depositAmount;
+
+    public function searchProducts($formData)
+    {
+        [$this->propertyValue, $this->depositAmount] = $formData;
+    }
 
     public function render()
     {
@@ -35,7 +42,7 @@ class ProductSearch extends Component
             $products = collect();
         }
 
-        return view('livewire.product-search', [
+        return view('livewire.product-search-results', [
             'searchProducts' => $searchProducts,
             'ltv' => $ltv,
             'netLoan' => $netLoan,
