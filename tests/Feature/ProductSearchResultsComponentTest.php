@@ -26,19 +26,16 @@ class ProductSearchResultsComponentTest extends TestCase
         Product::factory()->create([
             'name' => 'Product with LTV 80%',
             'max_ltv' => 80,
-            'featured' => false,
         ]);
 
         Product::factory()->create([
             'name' => 'Product with LTV 79%',
             'max_ltv' => 79,
-            'featured' => false,
         ]);
 
         Product::factory()->create([
             'name' => 'Product with LTV 81%',
             'max_ltv' => 81,
-            'featured' => false,
         ]);
 
         Livewire::test(ProductSearchResults::class)
@@ -54,25 +51,21 @@ class ProductSearchResultsComponentTest extends TestCase
         Product::factory()->create([
             'name' => 'Product with LTV 75%',
             'max_ltv' => 75,
-            'featured' => false,
         ]);
 
         Product::factory()->create([
             'name' => 'Product with LTV 73%',
             'max_ltv' => 73,
-            'featured' => false,
         ]);
 
         Product::factory()->create([
             'name' => 'Product with LTV 76%',
             'max_ltv' => 76,
-            'featured' => false,
         ]);
 
         Product::factory()->create([
             'name' => 'Product with LTV 74%',
             'max_ltv' => 74,
-            'featured' => false,
         ]);
 
         Livewire::test(ProductSearchResults::class)
