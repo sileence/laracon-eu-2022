@@ -32,17 +32,17 @@ class CalculateLtvTest extends TestCase
     private function providesCalculations(): Iterator
     {
         yield [
-            100_000,
-            25_000,
-            75_000,
-            75,
+            'givenPropertyValue' => 100_000,
+            'givenDepositAmount' => 25_000,
+            'expectedNetLoan' => 75_000,
+            'expectedLtv' => 75,
         ];
 
         yield [
-            250_000,
-            50_000,
-            200_000,
-            80,
+            'givenPropertyValue' => 250_000,
+            'givenDepositAmount' => 50_000,
+            'expectedNetLoan' => 200_000,
+            'expectedLtv' => 80,
         ];
 
         // ...
