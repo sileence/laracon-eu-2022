@@ -25,7 +25,7 @@ If you're looking for new career opportunities, please visit the [careers page](
 
 ## Terminal aliases
 
-Add this shortcuts to your ZSH configuration file to move quickly between branches, see and compare their change:
+Add the following shortcuts to your ZSH configuration file to move quickly between branches, see and compare their changes:
 
 ```
 step() {
