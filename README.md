@@ -22,3 +22,25 @@ This repository contains the demo from my talk in [Laracon EU](https://laracon.e
 * [LendInvest](http://lendinvest.com/) for giving me the support to prepare and present the talk in record time.
 If you're looking for new career opportunities, please visit the [careers page](https://www.lendinvest.com/careers/).
 * [Marek Lenik](https://github.com/criography) for contributing the design and frontend code of this demo project.
+
+## Terminal aliases
+
+Add this shortcuts to your ZSH configuration file to move quickly between branches, see and compare their change:
+
+```
+step() {
+   git checkout step-$1
+}
+
+fstep() {
+   git reset --hard && git clean -df && git checkout step-$1
+}
+
+compare() {
+   git diff step-$1...step-$2
+}
+
+changes() {
+   git diff step-$1...step-$2 --name-only
+}
+```
