@@ -7,16 +7,20 @@ use App\Services\CalculateLtv;
 use App\Services\DetermineSuitability;
 use Generator;
 use Tests\TestCase;
+use Mockery as m;
 
 class DetermineSuitabilityTest extends TestCase
 {
-    protected DetermineSuitability $suitability;
+    private CalculateLtv $ltvCalculator;
+    private DetermineSuitability $suitability;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->suitability = new DetermineSuitability();
+        $this->ltvCalculator = m::mock(CalculateLtv::class);
+
+        $this->suitability = new DetermineSuitability($this->ltvCalculator);
     }
 
     /**
