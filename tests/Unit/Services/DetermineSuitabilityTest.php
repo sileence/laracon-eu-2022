@@ -3,6 +3,7 @@
 namespace Tests\Unit\Services;
 
 use App\Models\Product;
+use App\Services\CalculateLtv;
 use App\Services\DetermineSuitability;
 use Generator;
 use Tests\TestCase;
@@ -42,6 +43,15 @@ class DetermineSuitabilityTest extends TestCase
             'propertyValue' => 100000,
             'depositAmount' => 40000,
             'expectedSuitability' => true,
+        ];
+
+        yield 'Unsuitable product: requested loan is 71% > max LTV of the product' => [
+            'product' => new Product([
+                'max_ltv' => 70,
+            ]),
+            'propertyValue' => 100000,
+            'depositAmount' => 29000,
+            'expectedSuitability' => false,
         ];
     }
 }
