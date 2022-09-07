@@ -76,5 +76,20 @@ class DetermineSuitabilityTest extends TestCase
             ),
             'expectedSuitability' => false,
         ];
+
+        yield 'Unsuitable product: net loan is greater than the property value' => [
+            'product' => new Product([
+                'max_ltv' => 80,
+            ]),
+            'propertyValue' => 500000,
+            'depositAmount' => 100000,
+            'ltvCalculation' => new LtvCalculation(
+                propertyValue: 500000,
+                depositAmount: 100000,
+                netLoan: 500001,
+                ltv: 80,
+            ),
+            'expectedSuitability' => false,
+        ];
     }
 }
