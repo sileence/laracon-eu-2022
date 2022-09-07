@@ -12,16 +12,15 @@ use Mockery as m;
 
 class DetermineSuitabilityTest extends TestCase
 {
-    private CalculateLtv $ltvCalculator;
     private DetermineSuitability $suitability;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->ltvCalculator = m::mock(CalculateLtv::class);
-
-        $this->suitability = new DetermineSuitability($this->ltvCalculator);
+        $this->suitability = new DetermineSuitability(
+            new CalculateLtv()
+        );
     }
 
     /**
@@ -32,14 +31,8 @@ class DetermineSuitabilityTest extends TestCase
         Product $product,
         float $propertyValue,
         float $depositAmount,
-        LtvCalculation $ltvCalculation,
         bool $expectedSuitability,
     ) {
-        $this->ltvCalculator
-            ->expects('calculate')
-            ->with($propertyValue, $depositAmount)
-            ->andReturns($ltvCalculation);
-
         $result = $this->suitability->determine($product, $propertyValue, $depositAmount);
 
         self::assertSame($expectedSuitability, $result);
@@ -53,12 +46,6 @@ class DetermineSuitabilityTest extends TestCase
             ]),
             'propertyValue' => 100000,
             'depositAmount' => 40000,
-            'ltvCalculation' => new LtvCalculation(
-                propertyValue: 100000,
-                depositAmount: 40000,
-                netLoan: 60000,
-                ltv: 60,
-            ),
             'expectedSuitability' => true,
         ];
 
@@ -68,12 +55,6 @@ class DetermineSuitabilityTest extends TestCase
             ]),
             'propertyValue' => 100000,
             'depositAmount' => 29000,
-            'ltvCalculation' => new LtvCalculation(
-                propertyValue: 100000,
-                depositAmount: 29000,
-                netLoan: 71000,
-                ltv: 71,
-            ),
             'expectedSuitability' => false,
         ];
 
@@ -82,13 +63,7 @@ class DetermineSuitabilityTest extends TestCase
                 'max_ltv' => 80,
             ]),
             'propertyValue' => 500000,
-            'depositAmount' => 100000,
-            'ltvCalculation' => new LtvCalculation(
-                propertyValue: 500000,
-                depositAmount: 100000,
-                netLoan: 500001,
-                ltv: 80,
-            ),
+            'depositAmount' => -1, // @todo: add validation to prevent negative values as the deposit amount.
             'expectedSuitability' => false,
         ];
     }
