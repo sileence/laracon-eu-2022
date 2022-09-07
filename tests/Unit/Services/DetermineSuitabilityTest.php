@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Services;
 
+use App\Dto\LtvCalculation;
 use App\Models\Product;
 use App\Services\CalculateLtv;
 use App\Services\DetermineSuitability;
@@ -31,8 +32,14 @@ class DetermineSuitabilityTest extends TestCase
         Product $product,
         float $propertyValue,
         float $depositAmount,
+        LtvCalculation $ltvCalculation,
         bool $expectedSuitability,
     ) {
+        $this->ltvCalculator
+            ->expects('calculate')
+            ->with($propertyValue, $depositAmount)
+            ->andReturns($ltvCalculation);
+
         $result = $this->suitability->determine($product, $propertyValue, $depositAmount);
 
         self::assertSame($expectedSuitability, $result);
@@ -46,6 +53,12 @@ class DetermineSuitabilityTest extends TestCase
             ]),
             'propertyValue' => 100000,
             'depositAmount' => 40000,
+            'ltvCalculation' => new LtvCalculation(
+                propertyValue: 100000,
+                depositAmount: 40000,
+                netLoan: 60000,
+                ltv: 60,
+            ),
             'expectedSuitability' => true,
         ];
 
@@ -55,6 +68,12 @@ class DetermineSuitabilityTest extends TestCase
             ]),
             'propertyValue' => 100000,
             'depositAmount' => 29000,
+            'ltvCalculation' => new LtvCalculation(
+                propertyValue: 100000,
+                depositAmount: 29000,
+                netLoan: 71000,
+                ltv: 71,
+            ),
             'expectedSuitability' => false,
         ];
     }
