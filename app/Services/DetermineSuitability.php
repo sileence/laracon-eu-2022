@@ -14,6 +14,14 @@ class DetermineSuitability
     {
         $ltvCalculation = $this->ltvCalculator->calculate($propertyValue, $depositAmount);
 
-        return $product->max_ltv >= $ltvCalculation->ltv;
+        if ($ltvCalculation->netLoan > $propertyValue) {
+            return false;
+        }
+
+        if ($product->max_ltv < $ltvCalculation->ltv) {
+            return false;
+        }
+
+        return true;
     }
 }
